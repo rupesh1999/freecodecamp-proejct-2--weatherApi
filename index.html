@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>current weather app</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    
+    <div class="wrapper">
+        <div class="container text-center">
+            <div class="inner-container">
+                <h1 class="text-center">The Local Weather App</h1>
+                <h2><span id="place"></span><span id="weather"></span><br></h2>
+                <h2><span id="temp"></span><br></h2>
+                <h2 id="windspeed"><br></h2>
+            </div>
+        </div>
+    </div>
+
+<script>
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+        var weather= new XMLHttpRequest();
+        weather.open("GET" , "http://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=373fcdbad8f15d3826c0feefe97012b4", false);
+        weather.send(null);
+        var r = JSON.parse(weather.response);
+        document.getElementById("place").innerHTML="Weather at "+ r.name + "";
+        document.getElementById("weather").innerHTML= " is<br> "+r.weather[0].main;
+        document.getElementById("temp").innerHTML="The Temprature Is "+(r.main.temp-275.15) +"&#x2103";
+        document.getElementById("windspeed").innerHTML="The wind speed is - " + r.wind.speed + "miles/hour";
+        
+   
+   
+    });
+    }
+
+   
+</script>
+
+
+</body>
+</html>

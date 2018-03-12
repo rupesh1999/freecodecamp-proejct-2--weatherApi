@@ -1,0 +1,44 @@
+.wrapper {
+    background-image: url("images/background1.jpg");
+    height: 100vh;
+    font-family: lobster;
+    width: 100vw;
+    color: rgb(77, 77, 74);
+    z-index: -1;
+}
+.container {
+    border-radius: 60px;
+    height: 85vh;
+    position: relative;
+    top: 6vh;
+    background-color: rgba(230, 222, 222, 0.541);
+    box-shadow: 10px 6px 8px rgb(43, 42, 42)
+}
+.container h1{
+    position: relative;
+    top: 2vh;
+    font-size: 60px;
+    color: rgb(85, 85, 82);
+    font-family: lobster;
+    z-index: 1;
+}
+.inner-container {
+    position: relative;
+    top: 14vh;
+}
+.container h2 {
+    position: relative;
+    top: 40px;
+}
+.container h2:nth-child(3) {
+    position: relative;
+    top: 60px;
+}
+.container h2:nth-child(3) {
+    position: relative;
+    top: 60px;
+}
+.container h2:nth-child(4)  {
+    position: relative;
+    top: 80px;
+}
